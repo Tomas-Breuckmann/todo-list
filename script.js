@@ -7,7 +7,6 @@ function adicionaTarefa(){
     if (valor==''){
         alert('Não há nada na lista a ser adicionado.')
     } else{
-    // item.classList.add('cor')
     lista.appendChild(item)
     document.getElementById('texto-tarefa').value=''
 }
@@ -17,7 +16,6 @@ function adicionaTarefa(){
     const lista=document.getElementById('lista-tarefas')  
     lista.addEventListener('click',function(event){
         let back=document.getElementsByClassName('selecao')
-        console.log(back)
         if(back.length==0){
             event.target.classList.add('selecao')
         } else{
@@ -29,11 +27,14 @@ function adicionaTarefa(){
 // risca o elemento ao ser clicado duas vezes
 lista.addEventListener('dblclick',function(event){
     let risco=document.getElementsByClassName('completed')
-    console.log(risco)
-    console.log(event.target.className)
     if(event.target.classList.contains('completed')===true){
         event.target.classList.remove('completed')
     } else{
         event.target.classList.add('completed')
     }
 })
+
+function apagaTudo(){
+    let listaTarefas=document.getElementById('lista-tarefas')
+    listaTarefas.parentNode.removeChild(listaTarefas)
+}
