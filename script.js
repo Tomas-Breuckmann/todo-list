@@ -9,16 +9,17 @@ function adicionaTarefa(){
     document.getElementById('texto-tarefa').value=''
 }
 
-function pintaFundo(event){
-    let lista=document.getElementById('lista-tarefas')  
+// seleciona elemento da lista ao clicar
+    const lista=document.getElementById('lista-tarefas')  
     lista.addEventListener('click',function(event){
         let selec=document.getElementsByClassName('cor')
-        console.log(selec)
-        for(let i=0;i<selec.length;i+=1){
-            selec[i].style.backgroundColor='none'
+        let back=document.getElementsByClassName('selecao')
+        console.log(back)
+        if(back.length==0){
+            event.target.classList.add('selecao')
+        } else{
+            document.querySelector('.selecao').classList.remove('selecao')
+            event.target.classList.add('selecao')
         }
-        event.target.style.backgroundColor='rgb(128, 128, 128)'
     })
-}
-pintaFundo()
 
