@@ -36,5 +36,13 @@ lista.addEventListener('dblclick',function(event){
 
 function apagaTudo(){
     let listaTarefas=document.getElementById('lista-tarefas')
+    console.log(listaTarefas.length)
     listaTarefas.parentNode.removeChild(listaTarefas)
+}
+
+function removerFinalizados(){
+    let feito=document.getElementsByClassName('completed')
+    for (let i=feito.length-1;i>=0;i-=1){
+        feito[i].parentNode.removeChild(feito[i])
+    }
 }
