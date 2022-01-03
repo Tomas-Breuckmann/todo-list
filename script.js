@@ -36,7 +36,7 @@ lista.addEventListener('dblclick',function(event){
 
 function apagaTudo(){
     let listaTarefas=document.getElementById('lista-tarefas')
-    console.log(listaTarefas.length)
+    // console.log(listaTarefas.length)
     listaTarefas.parentNode.removeChild(listaTarefas)
 }
 

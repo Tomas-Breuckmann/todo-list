@@ -1,4 +1,4 @@
-body{background-color: blue;}
+body{background-color: rgb(204, 202, 183);}
 /* .cor{background-color: white} */
 .selecao{background-color: rgb(128,128,128);}
 .completed{text-decoration: line-through solid rgb(0,0,0);}
