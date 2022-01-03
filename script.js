@@ -4,6 +4,7 @@ function adicionaTarefa(){
     let lista=document.getElementById('lista-tarefas')
     let item=document.createElement('li')
     item.innerText=valor;
+    item.classList.add('item-da-lista')
     if (valor==''){
         alert('Não há nada na lista a ser adicionado.')
     } else{
@@ -35,9 +36,12 @@ lista.addEventListener('dblclick',function(event){
 })
 
 function apagaTudo(){
-    let listaTarefas=document.getElementById('lista-tarefas')
-    // console.log(listaTarefas.length)
-    listaTarefas.parentNode.removeChild(listaTarefas)
+    // let listaTarefas=document.getElementById('lista-tarefas')
+    // listaTarefas.parentNode.removeChild(listaTarefas)
+    let itensDaLista=document.querySelectorAll('.item-da-lista')
+    for (let i=itensDaLista.length-1;i>=0;i-=1){
+        itensDaLista[i].parentNode.removeChild(itensDaLista[i])
+    }
 }
 
 function removerFinalizados(){
@@ -45,4 +49,9 @@ function removerFinalizados(){
     for (let i=feito.length-1;i>=0;i-=1){
         feito[i].parentNode.removeChild(feito[i])
     }
+}
+
+function removerSelecionado(){
+    let feito=document.querySelector('.selecao')
+    feito.parentNode.removeChild(feito)
 }
