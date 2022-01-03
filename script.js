@@ -1,14 +1,37 @@
+function loadTarefas(){
+    // apagaTudo()
+    let itens=JSON.parse(localStorage.getItem('itens'))
+    if (itens == null){
+    } else{
+        let quantidade=itens.length
+        console.log(quantidade)
+        let lista=document.getElementById('lista-tarefas')
+        for (let i=0;i<quantidade;i+=1){    
+            let it=document.createElement('li')
+            it.innerText = itens[i].item;
+            it.classList.add('item-da-lista')
+            if (itens[i].classe=='1'){
+                it.classList.add('completed')
+            }
+            lista.appendChild(it)
+       }            
+    }
+}
+loadTarefas()
+
+
 // adiciona a tarefa ao clicar no botão
 function adicionaTarefa(){
     let valor=document.getElementById("texto-tarefa").value;
     let lista=document.getElementById('lista-tarefas')
     let item=document.createElement('li')
-    item.innerText=valor;
-    item.classList.add('item-da-lista')
+
     if (valor==''){
         alert('Não há nada na lista a ser adicionado.')
     } else{
-    lista.appendChild(item)
+        item.innerText=valor;
+        item.classList.add('item-da-lista')
+        lista.appendChild(item)
     document.getElementById('texto-tarefa').value=''
 }
 }
@@ -54,4 +77,26 @@ function removerFinalizados(){
 function removerSelecionado(){
     let feito=document.querySelector('.selecao')
     feito.parentNode.removeChild(feito)
+}
+
+function salvarTarefas(){
+    // localStorage.remove('itens')
+    let listaDeItens=document.getElementsByClassName('item-da-lista')
+    let quantidadeDeItens=document.getElementsByClassName('item-da-lista').length
+if (quantidadeDeItens>0){
+    let itens= new Array(quantidadeDeItens)
+    for (i=0;i<quantidadeDeItens;i+=1){
+        let texto=listaDeItens[i].innerText
+        let cl=listaDeItens[i].classList.contains('completed')
+        console.log(cl)
+        if (cl==true){
+            itens[i]={item: texto, classe: '1'}
+        } else {
+            itens[i]={item: texto, classe: '0'}
+        }
+        localStorage.setItem('itens',JSON.stringify(itens))
+    }
+} else{
+    alert('Inclua pelo menos um item na lista para ser salvo.')
+}
 }
