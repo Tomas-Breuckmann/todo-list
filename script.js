@@ -4,7 +4,6 @@ function loadTarefas(){
     if (itens == null){
     } else{
         let quantidade=itens.length
-        console.log(quantidade)
         let lista=document.getElementById('lista-tarefas')
         for (let i=0;i<quantidade;i+=1){    
             let it=document.createElement('li')
@@ -88,7 +87,6 @@ if (quantidadeDeItens>0){
     for (i=0;i<quantidadeDeItens;i+=1){
         let texto=listaDeItens[i].innerText
         let cl=listaDeItens[i].classList.contains('completed')
-        console.log(cl)
         if (cl==true){
             itens[i]={item: texto, classe: '1'}
         } else {
@@ -98,5 +96,37 @@ if (quantidadeDeItens>0){
     }
 } else{
     alert('Inclua pelo menos um item na lista para ser salvo.')
+}
+}
+
+
+function moverCima(){
+    let item=document.querySelector('.selecao')
+    if (item==null){
+
+    } else {
+    let anterior=item.previousElementSibling
+    if (anterior==null){
+
+    } else {
+    item.parentNode.removeChild(item)
+    anterior.insertAdjacentElement('beforebegin',item)
+}
+}
+}
+
+function moverBaixo(){
+    let item=document.querySelector('.selecao')
+    
+    if (item==null){
+
+    } else {
+        let proximo=item.nextElementSibling
+    if (proximo==null){
+
+    } else {
+    item.parentNode.removeChild(item)
+    proximo.insertAdjacentElement('afterend',item)
+}
 }
 }
